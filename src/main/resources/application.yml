@@ -16,14 +16,32 @@ spring:
     format:
       date: yyyy-MM-dd
       time: yyyy-MM-dd HH:mm:ss
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+    timeout: 10000
+    expire: 60000 #自定义属性
 # 加载映射文件
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
   type-aliases-package: com.codemaster.entity
   configuration:
     map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      logic-delete-field: isDelete #逻辑删除字段名
+      logic-delete-value: 1 #逻辑删除值1
+      logic-not-delete-value: 0 #逻辑未删除0
 #显示日志
 logging:
   level:
     com.codemaster.dao: debug
-
+#jwt配置
+jwt:
+  secret: mysecret #密钥
+  expiration: 1800000 # 30 minutes
+#登录请求地址(自定义)
+request:
+  login:
+    url: /api/user/login
