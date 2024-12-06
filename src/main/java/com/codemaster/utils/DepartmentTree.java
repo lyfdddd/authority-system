@@ -30,8 +30,7 @@ public class DepartmentTree {
                     //复制属性
                     BeanUtils.copyProperties(item, dept);
                     //获取每一个item的下级部门,递归生成部门树
-                    List<Department> children = makeDepartmentTree(deptList,
-                            item.getId());
+                    List<Department> children = makeDepartmentTree(deptList,item.getId());
                     //设置子部门
                     dept.setChildren(children);
                     //将部门对象添加到集合
