@@ -45,3 +45,10 @@ jwt:
 request:
   login:
     url: /api/user/login
+aliyun:
+  oss:
+    file:
+      access-key-id: LTAI5tKSrXnKjpb1sNL6eiwN
+      access-key-secret: 3QCeFhZvlCtIyixyRnXsNdkzDHNrrI
+      bucket-name: code-master
+      endpoint: oss-cn-hangzhou.aliyuncs.com

@@ -54,4 +54,15 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         //保存角色权限
         return baseMapper.saveRolePermission(roleId,permissionIds) > 0;
     }
+
+    /**
+     * 根据用户ID查询该用户拥有的角色ID
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Long> findRoleIdByUserId(Long userId) {
+        return baseMapper.findRoleIdByUserId(userId);
+    }
 }
