@@ -11,6 +11,7 @@ import com.codemaster.service.UserService;
 import com.codemaster.utils.Result;
 import com.codemaster.vo.query.RoleQueryVo;
 import com.codemaster.vo.query.UserQueryVo;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,6 +57,7 @@ public class UserController {
      * @return: com.codemaster.utils.Result
      **/
     @PostMapping("/add")
+    @PreAuthorize("hasAuthority('sys:user:add')")
     public Result add(@RequestBody User user) {
         //查询用户
         User item = userService.findUserByUserName(user.getUsername());
@@ -79,6 +81,7 @@ public class UserController {
      * @return
      */
     @PutMapping("/update")
+    @PreAuthorize("hasAuthority('sys:user:edit')")
     public Result update(@RequestBody User user) {
 //查询用户
         User item = userService.findUserByUserName(user.getUsername());
@@ -99,6 +102,7 @@ public class UserController {
      * @return
      */
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasAuthority('sys:user:delete')")
     public Result delete(@PathVariable Long id) {
 //调用删除用户信息的方法
         if(userService.deleteById(id)){
@@ -113,6 +117,7 @@ public class UserController {
      * @return
      */
     @GetMapping("/getRoleListForAssign")
+    @PreAuthorize("hasAuthority('sys:user:assign')")
     public Result getRoleListForAssign(RoleQueryVo roleQueryVo){
 //创建分页对象
         IPage<Role> page = new Page<Role>(roleQueryVo.getPageNo(),
@@ -128,6 +133,7 @@ public class UserController {
      * @return
      */
     @GetMapping("/getRoleByUserId/{userId}")
+    @PreAuthorize("hasAuthority('sys:user:assign')")
     public Result getRoleByUserId(@PathVariable Long userId){
 //调用根据用户ID查询该用户拥有的角色ID的方法
         List<Long> roleIds = roleService.findRoleIdByUserId(userId);
@@ -140,6 +146,7 @@ public class UserController {
      * @return
      */
     @PostMapping("/saveUserRole")
+    @PreAuthorize("hasAuthority('sys:user:assign')")
     public Result saveUserRole(@RequestBody UserRoleDTO userRoleDTO){
         if (userService.saveUserRole(userRoleDTO.getUserId(),
                 userRoleDTO.getRoleIds())) {
