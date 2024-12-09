@@ -3,6 +3,7 @@ package com.codemaster.service;
 import com.codemaster.entity.Permission;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.codemaster.vo.query.PermissionQueryVo;
+import com.codemaster.vo.query.RolePermissionVo;
 
 import java.util.List;
 
@@ -38,4 +39,13 @@ public interface PermissionService extends IService<Permission> {
      * @return
      */
     boolean hasChildrenOfPermission(Long id);
+
+    /**
+     * 查询分配权限树列表
+     * @param userId
+     * @param roleId
+     * @return
+     */
+    RolePermissionVo findPermissionTree(Long userId, Long roleId);
+
 }

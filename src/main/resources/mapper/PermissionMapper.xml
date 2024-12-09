@@ -38,5 +38,9 @@
         where u.id =#{userId}
         order by p.id asc
     </select>
+    <select id="findPermissionListByRoleId" resultType="com.codemaster.entity.Permission">
+        select t1.* from sys_permission t1 inner join sys_role_permission t2 on t1.id = t2.permission_id
+        where t2.role_id = #{roleId}
+    </select>
 
 </mapper>

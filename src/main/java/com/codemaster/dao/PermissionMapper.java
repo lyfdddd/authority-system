@@ -14,4 +14,11 @@ public interface PermissionMapper extends BaseMapper<Permission> {
      * @return: java.util.List<com.codemaster.entity.Permission>
      **/
     List<Permission> findPermissionListByUserId(Long userId);
+
+    /**
+     * 根据角色ID查询权限列表
+     * @param roleId
+     * @return
+     */
+    List<Permission> findPermissionListByRoleId(Long roleId);
 }
