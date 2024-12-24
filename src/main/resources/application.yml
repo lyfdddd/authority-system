@@ -48,7 +48,7 @@ request:
 aliyun:
   oss:
     file:
-      access-key-id: LTAI5tKSrXnKjpb1sNL6eiwN
-      access-key-secret: 3QCeFhZvlCtIyixyRnXsNdkzDHNrrI
-      bucket-name: code-master
-      endpoint: oss-cn-hangzhou.aliyuncs.com
+      access-key-id: 
+      access-key-secret: 
+      bucket-name: 
+      endpoint: 
